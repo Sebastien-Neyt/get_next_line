@@ -1,21 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sneyt <sneyt@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/11 08:37:17 by sneyt             #+#    #+#             */
+/*   Updated: 2022/05/11 11:54:22 by sneyt            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
-#include <stdio.h>
 #include <fcntl.h>
 
-int main(void)
+int	main(void)
 {
-    int fd;
-    char *line;
-    int i;
-    i = 1;
+    int     fd;
+    char    *line;
 
-    fd = open("test", O_RDONLY);
-    while (i <= 2)
+    fd = open("test.txt", O_RDONLY);
+    while (1)
     {
         line = get_next_line(fd);
-        printf("%s", line);
-        if (line == 0)
+        if (line == NULL)
             break;
+        printf("%s", line);
         free(line);
     }
     return (0);
